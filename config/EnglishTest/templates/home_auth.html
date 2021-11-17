@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %} Главная страница {% endblock %}
+
+
+{% block menu %}
+<li class="nav-item"><a href="{% url 'cabinet' %}" class="nav-link active" aria-current="page">Личный кабинет</a></li>
+<li class="nav-item"><a href="{% url 'logout' %}" class="nav-link" aria-current="page">Выйти</a></li>
+{% endblock %}
+
+
+
+{% block content %}
+<div class="row" style="margin-bottom: 300px; margin-top: 100px;">
+    <div class="row " style="width: 900px; margin-left: 190px; ">
+        <h2 align="center" class="col-md-6 offset-md-3">Здравствуйте <b>{{ name }}</b></h2>
+        <div class="row " style="width: 500px; margin-left: 180px">
+            <hr>
+        </div>
+    </div>
+    <a href="{% url 'start_tests' %}" style="text-decoration: none" class="row">
+        <button class="btn btn-primary" style="margin-top:150px">Начать тестирование!</button>
+    </a>
+</div>
+
+
+{% endblock %}

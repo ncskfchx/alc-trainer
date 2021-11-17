@@ -2,7 +2,6 @@ from django.db import models
 
 
 class TestModel(models.Model):
-    id = models.IntegerField(primary_key=True, unique=True)
     question = models.CharField(max_length=225)
     true_answer = models.CharField(max_length=225)
     false_answer = models.CharField(max_length=225)
@@ -11,3 +10,15 @@ class TestModel(models.Model):
 
     class Meta:
         db_table = 'question'
+
+
+
+class ProgressModel(models.Model):
+    username = models.CharField(max_length=225, unique=True)
+    progress = models.IntegerField()
+    count_question = models.IntegerField()
+    true_count_question = models.IntegerField()
+    false_count_question = models.IntegerField()
+
+    class Meta:
+        db_table = 'progress'
