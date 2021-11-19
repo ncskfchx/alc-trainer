@@ -3,6 +3,11 @@
 {% block title %} Тестирование (уровень Легкий) {% endblock %}
 {% block content %}
 
+{% block menu %}
+<li class="nav-item"><a href="{% url 'cabinet' %}" class="nav-link active" aria-current="page">Личный кабинет</a></li>
+<li class="nav-item"><a href="{% url 'logout' %}" class="nav-link" aria-current="page">Выйти</a></li>
+{% endblock %}
+
 
 <div class="row" style="margin-bottom: 50px; margin-top: 50px;">
 

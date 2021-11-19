@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %} Главная страница {% endblock %}
+
+
+{% block menu %}
+<li class="nav-item"><a href="{% url 'cabinet' %}" class="nav-link active" aria-current="page">Личный кабинет</a></li>
+<li class="nav-item"><a href="{% url 'logout' %}" class="nav-link" aria-current="page">Выйти</a></li>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="row col-lg-6 col-md-8 mx-auto" style="margin-top:100px;">
+    <h1 align="center" class="fw-light">Выберите тип тестирования</h1>
+    <hr>
+    <p align="center" class="lead text-muted">Тесты различаются сложностью, выберите тип теста который подходит для
+        вас</p>
+</div>
+
+<br>
+
+<div class="row">
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <span>Грамотические вопросы <br> - Всего 15 вопросов</span>
+            <a href="" class="btn btn-primary" style="margin-top:20px">
+                <p align="center" class="card-text">
+                    <b>Легкий тест</b>
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <span>Аудио тестирование <br> - Всего 15 аудиодорожек</span>
+            <a href="" class="btn btn-primary" style="margin-top:20px">
+                <p align="center" class="card-text">
+                    <b>Средний тест</b>
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <span>Аудио, видео вопросы<br> - Всего 15 вопросов</span>
+            <a href="" class="btn btn-primary" style="margin-top:20px">
+                <p align="center" class="card-text">
+                    <b>Сложный тест</b>
+                </p>
+            </a>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}

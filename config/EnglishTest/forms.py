@@ -36,6 +36,8 @@ class RegisterForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
     phone = forms.CharField(required=False)
     email = forms.CharField(required=True)
+    first_name = forms.CharField(required=True)
+    last_name = forms.CharField(required=True)
 
 
     def __init__(self, *args, **kwargs):
@@ -72,6 +74,9 @@ class RegisterForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'password', 'confirm_password', 'first_name', 'last_name', 'email', 'phone']
+
+
+
 
 
 

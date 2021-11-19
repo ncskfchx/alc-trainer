@@ -8,24 +8,8 @@ from loguru import logger
 import random
 
 from .models import TestModel
-from peewee import *
+from .models_progress import ProgressModel
 
-conn = SqliteDatabase('/Users/macbookpro/Documents/EnglishTest/config/db.sqlite3')
-
-class BaseModel(Model):
-    class Meta:
-        database = conn  # соединение с базой, из шаблона выше
-
-
-class ProgressModel(BaseModel):
-    username = CharField(max_length=225, unique=True)
-    progress = IntegerField()
-    count_question = IntegerField()
-    true_count_question = IntegerField()
-    false_count_question = IntegerField()
-
-    class Meta:
-        table_name = 'progress'
 
 
 
@@ -82,7 +66,11 @@ class RegisrerView(CreateView):
             user = authenticate(username=form.cleaned_data['username'],
                                 password=form.cleaned_data['password'])
 
-            ProgressModel(username=form.cleaned_data['username'], progress=0).save()
+            ProgressModel(username=form.cleaned_data['username'],
+                          progress=0,
+                          count_question=0,
+                          true_count_question=0,
+                          false_count_question=0).save()
             login(request, user)
 
             return redirect('/')
@@ -91,8 +79,6 @@ class RegisrerView(CreateView):
 
         context = {'form': form}
         return render(request, 'register.html', context)
-
-
 
 
 class EnglishTestView(View):
@@ -137,24 +123,28 @@ class EnglishTestView(View):
         return render(request, 'testing.html', question)
 
 
-
-
 class CabinetView(View):
 
     def get(self, request, *args, **kwargs):
+
         if request.user.is_authenticated:
             user = User.objects.get(id=request.user.id)
-            if user:
-                context = {
-                    'first_name': user.first_name,
-                    'last_name': user.last_name,
-                    'username': user.username,
-                    'email': user.email
-                }
+            context = {
+                'first_name': user.first_name,
+                'last_name': user.last_name,
+                'username': user.username,
+                'email': user.email
+            }
+            return render(request, 'cabinet.html', context)
 
 
 
-                return render(request, 'cabinet.html', context)
+
+class TestingType(View):
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return render(request, 'type_testing.html')
+
 
 
 
